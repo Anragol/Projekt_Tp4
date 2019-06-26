@@ -82,18 +82,37 @@ namespace ProjektTp4
             {
 
                 //MessageBox.Show("Zly format w pasazerach wyhodzacych");
-                pass_in = 0;
+                pass_out = 0;
                 test2 = 1;
             }
             catch (System.OverflowException)
             {
                 MessageBox.Show("Za duza liczba przy pasazerach wychodzacych");
-                pass_in = 0;
+                pass_out = 0;
                 test2 = 0;
             }
 
+            if(pass + pass_in - pass_out < 0)
+            {
+                MessageBox.Show("Nie moze byc ujemna liczba ludzi!");
+                test1 = 0;
+                test2 = 0;
+            }
+            else if (pass + pass_in - pass_out > 8)
+            {
+                int buffer = pass + pass_in - pass_out;
+                string zmienna = buffer.ToString();
+                MessageBox.Show("Za duzo ludzi w windzie! Maksymalnie 8 osob na raz. Obecnie probuje byc w windzie " + zmienna + " osob.");
+                test1 = 0;
+                test2 = 0;
+            }
+            else
+            {
+                pass = pass + pass_in - pass_out;
+            }
+
             if(test1 == 1 && test2 == 1)
-            {   if (elev_que.Count == 0) elev_que.Enqueue(0);
+            {   if (elev_que.Count == 0) elev_que.Enqueue(curr_flor);
                 next_flor = elev_que.Peek();
                 elev_que.Dequeue();
                 deltay = next_flor - curr_flor;
@@ -161,6 +180,11 @@ namespace ProjektTp4
                 timer1.Enabled = false; //THE WORLD!!!
                 i = 0;
             }
+        }
+
+        private void Button1_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("Obecnie w windzie jest " + pass + " osob. Ich waga to " + pass*70 + "kg.");
         }
     }
 }
