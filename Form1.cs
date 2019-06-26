@@ -164,6 +164,10 @@ namespace ProjektTp4
         private void Form1_Paint(object sender, PaintEventArgs e)//rysowanie 
         {
             e.Graphics.FillRectangle(Brushes.Black, 50, y, 50, 75);//nasza winda
+            e.Graphics.FillRectangle(Brushes.Brown, 100, 265, 50, 10);
+            e.Graphics.FillRectangle(Brushes.Brown, 100, 215, 50, 10);
+            e.Graphics.FillRectangle(Brushes.Brown, 100, 165, 50, 10);
+            e.Graphics.FillRectangle(Brushes.Brown, 100, 115, 50, 10);
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
